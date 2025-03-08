@@ -29,7 +29,7 @@ public class BoardController {
 		
 		List<TcommBltBasModel> list = boardService.list(vo);
 		
-	    model.addAttribute("list123", list);
+	    model.addAttribute("list12333", list);
 	    
 	    return "boardList";
 	}
