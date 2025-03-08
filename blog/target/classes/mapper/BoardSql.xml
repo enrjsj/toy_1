@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blog.dao.BoardDao">
+    <select id="list"  resultType="blog.vo.TcommBltBasModel" parameterType="blog.vo.TcommBltBasModel">
+    	SELECT 		BLT_NO   /* 게시글 번호 */
+	        	,	BLT_TIT  /* 게시글 제목 */
+	        	,	BLT_SSTC /* 게시글 내용 */
+	        	,	WRTR_NO  /* 작성자 번호 */
+		        ,	WRTR_NM  /* 작성자 이름 */
+		        ,	USE_YN  /* 사용여부 */
+		        ,	DEL_YN  /* 삭제여부 */
+		        ,	REG_DTS /* 등록일 */
+		        ,	MOD_DTS /* 수정일 */
+		FROM 	TCOMM_BLT_BAS
+		WHERE 	USE_YN = 'Y'
+		AND		DEL_YN = 'N'
+		<if test="boardId != null and boardId != ''">
+		AND		BOARD_ID = #{boardId}
+		</if>
+	</select>
+	
+</mapper>
